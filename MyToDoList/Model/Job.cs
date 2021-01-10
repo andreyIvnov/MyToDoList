@@ -10,14 +10,18 @@ namespace MyToDoList.Model
     {
         public int ID { get; set; }
 
+        
         [Required]
         public string Title { get; set; }
 
+        
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
+        
         public bool IsDone { get; set; }
 
+        
         public DateTime DueDate { get; set; }
     }
 }

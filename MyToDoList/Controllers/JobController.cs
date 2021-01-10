@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyToDoList.Data;
+using MyToDoList.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,16 +21,20 @@ namespace MyToDoList.Controllers
         }
         // GET: api/<JobController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            List<Job> jobs = _context.Jobs.ToList();
+            return Ok(jobs);
         }
 
         // GET api/<JobController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            Job job = _context.Jobs.FirstOrDefault(j => j.ID == id);
+            if (job == null)
+                return NotFound("Job was not found :( ");
+            return Ok(job);
         }
 
         // POST api/<JobController>
