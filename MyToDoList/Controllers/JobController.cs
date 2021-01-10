@@ -39,14 +39,23 @@ namespace MyToDoList.Controllers
 
         // POST api/<JobController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(Job newJob)
         {
+            if (ModelState.IsValid)
+            {
+                _context.Jobs.Add(newJob);
+                _context.SaveChanges();
+                return Ok(newJob);
+            }
+            return BadRequest(ModelState);
+
         }
 
         // PUT api/<JobController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+            //Recording from 10/01/2020 ---- 30:00
         }
 
         // DELETE api/<JobController>/5
