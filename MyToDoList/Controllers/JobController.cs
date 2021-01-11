@@ -19,7 +19,9 @@ namespace MyToDoList.Controllers
         {
             _context = context;
         }
-        // GET: api/<JobController>
+        
+        
+        
         [HttpGet]
         public IActionResult Get()
         {
@@ -27,7 +29,8 @@ namespace MyToDoList.Controllers
             return Ok(jobs);
         }
 
-        // GET api/<JobController>/5
+        
+        
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -37,7 +40,8 @@ namespace MyToDoList.Controllers
             return Ok(job);
         }
 
-        // POST api/<JobController>
+        
+        
         [HttpPost]
         public IActionResult Post(Job newJob)
         {
@@ -51,17 +55,30 @@ namespace MyToDoList.Controllers
 
         }
 
-        // PUT api/<JobController>/5
+        
+        
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
             //Recording from 10/01/2020 ---- 30:00
         }
 
-        // DELETE api/<JobController>/5
+        
+        
+        
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var product = _context.Jobs.FirstOrDefault(p => p.ID == id);
+            if (product == null)
+            {
+                return NotFound("Product not fount :( ");
+            }
+
+            _context.Jobs.Remove(product);
+            _context.SaveChanges();
+
+            return Ok(product);
         }
     }
 }

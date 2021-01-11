@@ -1,0 +1,36 @@
+﻿<h1>My To Do List</h1>
+
+<form>
+    <label for="title">
+        Title:
+        <input type="text" name="title" id="title" />
+    </label>
+
+    <label for="due">
+        Date To Do:
+        <input type="date" name="due" id="due" />
+    </label>
+
+    <label for="desc">
+        Description:
+        <input type="text" name="desc" id="desc" />
+    </label>
+
+    <label for="isDone">
+        Is Done:
+        <input type="checkbox" name="isDone" id="isDone" />
+    </label>
+
+
+    <button type="button" onclick="addNew()">Add Task</button>
+</form>
+
+<br />
+<br />
+<br />
+
+
+<table border="1" id="Container">
+</table>
+
+<script src="../js/DataRandorator.js"></script>

@@ -33,6 +33,9 @@ namespace MyToDoList
                 app.UseDeveloperExceptionPage();
             }
 
+
+
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }
